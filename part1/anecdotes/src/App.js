@@ -1,5 +1,17 @@
 import React, { useState } from 'react'
 
+const Button = ({handleClick, text}) => {
+  return (
+    <button onClick= {handleClick}>
+      {text}
+    </button>
+  )
+}
+
+const Header = ({text}) => <div><h1>{text}</h1></div>
+
+const Text = ({text}) => <div>{text}</div>
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often',
@@ -14,18 +26,6 @@ const App = () => {
   const [selected, setSelected] = useState(0)
   const [points, setPoints] = useState(new Uint8Array(anecdotes.length))
   const [top, setTop] = useState(0)
-
-  const Button = ({handleClick, text}) => {
-    return (
-      <button onClick= {handleClick}>
-        {text}
-      </button>
-    )
-  }
-
-  const Header = ({text}) => <div><h1>{text}</h1></div>
-
-  const Text = ({text}) => <div>{text}</div>
 
   const randomizer = () => {
     const random = Math.floor(Math.random() * 7)

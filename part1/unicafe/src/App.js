@@ -1,27 +1,22 @@
 import React, { useState } from 'react'
 
-const App = () => {
-  // save clicks of each button to its own state
-  const [good, setGood] = useState(0)
-  const [neutral, setNeutral] = useState(0)
-  const [bad, setBad] = useState(0)
+const Header = ({text}) => <h1>{text}</h1>
 
-  const Header = ({text}) => <h1>{text}</h1>
+const Button =({ handleClick, text }) => (
+  <button onClick= {handleClick}>
+    {text}
+  </button>
+)
 
- const Button =({ handleClick, text }) => (
-   <button onClick= {handleClick}>
-     {text}
-   </button>
- )
+const Stat = ({text, count}) => (
+  <tr>
+    <td style={{padding: '5px'}}>{text}</td>
+    <td>{count}</td>
+  </tr>
+)
 
- const Stat = ({text, count}) => (
-   <tr>
-     <td style={{padding: '5px'}}>{text}</td>
-     <td>{count}</td>
-   </tr>
- )
-
- const StatSection = ({count}) => {
+const StatSection = ({good, bad, neutral}) => {
+  const count = good + bad + neutral
   if (count > 0) {
     return (
       <div>
@@ -40,7 +35,13 @@ const App = () => {
       </p>
     </div>
   )
- }
+}
+
+const App = () => {
+  // save clicks of each button to its own state
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
 
  const handleClick = (who) => {
    const increment = () => {
@@ -64,7 +65,7 @@ const App = () => {
       <Button handleClick={handleClick('neutral')} text='neutral'/>
       <Button handleClick={handleClick('bad')} text='bad'/>
       <Header text={'statistics'} />
-      <StatSection count={good + bad + neutral} />
+      <StatSection good={good} bad={bad} neutral={neutral} />
     </div>
   )
 }
