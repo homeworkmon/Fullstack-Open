@@ -1,1 +1,1 @@
-## Exercises 2.6-2.10 Fullstack Open Part 2
+## phonebook exercises fullstack open part2
