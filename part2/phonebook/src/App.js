@@ -40,11 +40,17 @@ const App = () => {
         dbService
           .replace(changedPerson)
           .then(data => {
-            setPersons(persons.map(person => person.id !== changedPerson.id ? person : data))
+            if (data ===null){
+              setMessageClass('error')
+              setMessage(`${changedPerson.name} has already been removed from the server`)
+              setTimeout(() => {
+                setMessage(null)
+              }, 5000)
+            } else { setPersons(persons.map(person => person.id !== changedPerson.id ? person : data)) }
           })
           .catch(error => {
             setMessageClass('error')
-            setMessage(`${changedPerson.name} has already been removed from the server`)
+            setMessage(error.response.data.error)
             setTimeout(() => {
               setMessage(null)
             }, 5000)
@@ -61,6 +67,13 @@ const App = () => {
           setPersons(persons.concat(dbnewperson))
           setMessageClass('notif')
           setMessage(`${dbnewperson.name} added successfully`)
+          setTimeout(() => {
+            setMessage(null)
+          }, 5000)
+        })
+        .catch(error => {
+          setMessageClass('error')
+          setMessage(error.response.data.error)
           setTimeout(() => {
             setMessage(null)
           }, 5000)
