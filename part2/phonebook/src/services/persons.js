@@ -16,7 +16,7 @@ const makeDeletion = id => {
     return request.then(response => response.data)
 }
 
-const replace =(changedPerson) => {
+const replace = (changedPerson) => {
     const request = axios.put(`${baseUrl}/${changedPerson.id}`, changedPerson)
     return request.then(response => response.data)
 }

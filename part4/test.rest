@@ -1,0 +1,53 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+    "title": "wooo node.js",
+    "author": "monica M",
+    "url": "https://monicasblog.com"
+}
+
+###
+GET http://localhost:3003/api/blogs
+
+###
+DELETE http://localhost:3003/api/blogs/61b90a8f488dec9acfa5d03e
+
+###
+PUT http://localhost:3003/api/blogs/61b90b99d00cb14169766d2e
+Content-Type: application/json
+
+{
+    "likes": 10
+}
+
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "matti",
+    "name": "Matti L",
+    "password": "sekred"
+}
+
+###
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+    "title": "Validation errors with mongoose",
+    "author": "monica m",
+    "url": "fullstack.open.ca",
+    "likes" : 13,
+    "userId": "61bcc362998f4efe65ffb357"
+}
+
+###
+POST http://localhost:3003/api/login
+Content-Type:application/json
+
+{
+    "username": "monica",
+    "password": "finland"
+}
