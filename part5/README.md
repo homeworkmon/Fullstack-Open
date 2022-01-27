@@ -1,1 +1,1 @@
-Part 5 Fullstack Open Exercises - bloglist frontend built with Create-React-app connected to Part 4 node server and tested with jest and cypress (e2e)
+# Testing Reach apps  with jest and cypress (e2e)

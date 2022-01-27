@@ -1,1 +1,1 @@
-# part 6 state management with redux
+# State management with redux
