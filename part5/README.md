@@ -1,1 +1,1 @@
-# Testing Reach apps  with jest and cypress (e2e)
+# Testing React apps  with jest and cypress (e2e)
