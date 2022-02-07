@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken')
 const blogRouter = require('express').Router()
 const Blog = require('../models/blog')
 const User = require('../models/user')
@@ -38,9 +37,9 @@ blogRouter.delete('/:id', middleware.userExtractor, async (request, response) =>
     if (!user) { response.status(404).json({ error: 'no corresponding blog found'})}
     else if (blog.user.toString() === user._id.toString()) {
       await Blog.findByIdAndRemove(blog._id)
-      response.status(204).end()
+      return response.status(204).end()
     } else if (blog.user.toString() !== user.id.toString()) {
-      response.status(401).json({ error: 'no permission to delete blog'})
+      return response.status(401).json({ error: 'no permission to delete blog'})
     }
 })
 
@@ -50,6 +49,13 @@ blogRouter.put('/:id', async (request, response) => {
   const blog = {
     likes: body.likes
   }
+
+  const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, blog, {new: true})
+  response.json(updatedBlog)
+})
+
+blogRouter.put('/:id/comments', async (request, response) => {
+  const blog = request.body
 
   const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, blog, {new: true})
   response.json(updatedBlog)

@@ -11,6 +11,7 @@ const requestLogger = (request, response, next) => {
 }
 
 const unknownEndpoint = (request, response) => {
+  console.log(request)
   response.status(404).send({ error: 'unknown endpoint' })
 }
 
@@ -25,6 +26,8 @@ const tokenExtractor = (request, response, next) => {
 
 const userExtractor = async (request, response, next) => {
   const decodedToken = jwt.verify(request.token, process.env.SECRET)
+
+  console.log(decodedToken.id)
 
   if(!request.token || !decodedToken.id) {
     return response.status(401).json({ error: 'token missing or invalid' })

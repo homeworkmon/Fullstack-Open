@@ -32,6 +32,36 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "monica",
+    "name": "monica",
+    "password": "monica"
+}
+
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "johnson",
+    "name": "Johnson J",
+    "password": "sekred"
+}
+
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "madmon",
+    "name": "madmon",
+    "password": "sekred"
+}
+
+###
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
@@ -48,6 +78,27 @@ POST http://localhost:3003/api/login
 Content-Type:application/json
 
 {
-    "username": "monica",
-    "password": "finland"
+    "username": "matti",
+    "password": "sekred"
 }
+
+###
+PUT http://localhost:3003/api/blogs/61fb2223aa03fc4a93d4fe5e/comments
+Content-Type: application/json
+
+{
+    "likes": 10,
+    "comments": ["here is a first comment"],
+    "title": "Using react hooks",
+    "author": "Arto Hellas",
+    "url": "asfasdfa",
+    "user": {
+    "username": "monica",
+    "name": "monica",
+    "id": "61fb2189aa03fc4a93d4fe57"
+    },
+    "id": "61fb2213aa03fc4a93d4fe5d"
+}
+
+###
+GET http://localhost:3003/api/blogs/61fb2223aa03fc4a93d4fe5e/comments
